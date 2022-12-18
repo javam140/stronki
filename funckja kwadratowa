@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            width: 4rem;
+            height: 4rem;
+            font-size: 3rem;
+        }
+        main {
+            font-size: 4rem;
+            text-align: center;
+        }
+        main button {
+            font-size: 3rem;
+        }
+        table {
+            text-align: center;
+        }
+    </style>
+    <script>
+        function delta() {
+            var a = document.getElementById("a").value;
+            var b = document.getElementById("b").value;
+            var c = document.getElementById("c").value;
+            var wdelta = (b*b)-4*a*c;
+            document.getElementById("box").innerHTML = "<br>delta = "+wdelta;
+            if (wdelta>=0) {
+                var pierwiastekzdelta = Math.sqrt(wdelta);
+                if (pierwiastekzdelta == Math.floor(pierwiastekzdelta)) {
+                    x1 = (-b-pierwiastekzdelta)/(2*a);
+                    document.getElementById("box").innerHTML += "<br>x1 = "+x1;
+                    x2 = (-b+pierwiastekzdelta)/(2*a);
+                    document.getElementById("box").innerHTML += "<br>x2 = "+x2;
+                }
+                else {
+                    dwaa = a*2;
+                    x1 = '<table border="1" rules="all" frame="void"><tr><td>-'+b+'-√'+wdelta+'</td></tr><tr><td>'+dwaa+'</td></tr></table>';
+                    x2 = '<table border="1" rules="all" frame="void"><tr><td>-'+b+'+√'+wdelta+'</td></tr><tr><td>'+dwaa+'</td></tr></table>';
+                    document.getElementById("box").innerHTML += "<br>x1 = <br><br>"+x1;
+                    document.getElementById("box").innerHTML += "<br>x2 = <br><br>"+x2;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <main>
+        f(x) = <input type="text" id="a">x<sup>2</sup> + <input type="text" id="b">x + <input type="text" id="c">
+        <br>
+        <button onclick="delta()">licz</button>
+    </main>
+    <div id="box">
+
+    </div>
+</body>
+</html>
